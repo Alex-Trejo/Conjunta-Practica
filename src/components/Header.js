@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box, Container, Link, HStack, Button } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { Box, Container, Link, HStack, Button, Image, Menu, MenuButton, MenuList, MenuItem, IconButton, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 const Header = () => {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const toast = useToast();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -16,13 +16,26 @@ const Header = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
     router.push('/login');
+    toast({
+      title: 'Sesión cerrada',
+      description: 'Has cerrado sesión correctamente.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const handleProfileClick = () => {
     if (isAuthenticated) {
       router.push('/userProfile');
     } else {
-      alert('Por favor inicie sesión para ver el perfil');
+      toast({
+        title: 'Acceso denegado',
+        description: 'Por favor, inicia sesión para ver el perfil.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
@@ -30,7 +43,8 @@ const Header = () => {
     <Box bg="teal.500" py={4} color="white">
       <Container maxW="container.xl">
         <HStack spacing={4} justify="space-between">
-          <HStack spacing={4}>
+          <HStack spacing={2} alignItems="center">
+            <Image boxSize="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Ethereum_logo_translucent.svg/1396px-Ethereum_logo_translucent.svg.png" />
             <Link href="/" color="white" fontWeight="bold">Home</Link>
             <Link href="/tasks" color="white" fontWeight="bold">Tasks</Link>
           </HStack>
@@ -42,8 +56,8 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link href="/login">Iniciar sesión</Link>
-                <Link href="/register">Registrarse</Link>
+                <Link href="/login" fontWeight="bold">Iniciar sesión</Link>
+                <Link href="/register" fontWeight="bold">Registrarse</Link>
               </>
             )}
           </HStack>
