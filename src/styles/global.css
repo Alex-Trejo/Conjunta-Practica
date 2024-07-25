@@ -1,12 +1,30 @@
+/* global.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(to bottom right, teal.50, purple.50); /* Fondo degradado */
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la vista */
+}
 
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
+  100% {
+    background-position: 100% 100%;
   }
+}
+
+.background-animation {
+  background: linear-gradient(45deg, teal.200, purple.200);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Input, VStack, Text, HStack, Image } from '@chakra-ui/react';
+import { Box, Button, Input, VStack, Text, HStack} from '@chakra-ui/react';
 import { getProfile, updateProfile } from '../utils/api';
+import Image from 'next/image'; // Importar el componente Image de Next.js
+
 
 export default function UserProfile() {
   const [user, setUser] = useState({ email: '', nombre: '', telefono: '', edad: '' });
@@ -45,7 +47,14 @@ export default function UserProfile() {
           color="white"
           p={8}
         >
-          <Text fontSize="3xl" fontWeight="bold">~(ºvº)~</Text>
+        <HStack spacing={4} mb={6}  >
+          <Image 
+            src="/images/logo.png" // Ruta desde la carpeta public
+            alt="Logo"
+            width={400} // Ajusta el tamaño según sea necesario
+            height={400}
+          />
+        </HStack>
         </Box>
         <VStack
           w="50%"

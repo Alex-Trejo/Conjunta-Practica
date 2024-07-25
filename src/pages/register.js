@@ -46,18 +46,18 @@ const Register = () => {
   };
 
   return (
-    <Flex minH="100vh" align="center" justify="center" bg="gray.50">
+    <Flex minH="100vh" align="center" justify="center" bgGradient="linear(to-r, purple.400, teal.300)">
       <Box
-        maxW="1000"
+        maxW="5xl" // Ajusta el ancho máximo para que el contenedor no sea demasiado ancho
         w="full"
         bg="white"
-        boxShadow="2xl"
+        boxShadow="lg" // Cambia el tamaño de la sombra para hacer el diseño más suave
         rounded="lg"
         p={8}
         display={{ md: 'flex' }}
       >
-        <Box flex={1} bgGradient="linear(to-r, purple.500, teal.400)" rounded="lg" p={8} color="white">
-          <Heading as="h2" size="xl" mb={4}>
+        <Box flex={1} bgGradient="linear(to-r, purple.500, teal.400)" rounded="lg" p={8} color="white" display="flex" alignItems="center" justifyContent="center">
+          <Heading as="h2" size="xl" textAlign="center">
             Join Us!
           </Heading>
         </Box>
